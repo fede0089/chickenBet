@@ -24,8 +24,15 @@ class BetService {
 	def checkWinners(BetCommandObject bco){
 		def results = bco.numbers
 		def allBets = list()
-		allBets.collect{bet->
-			[(bet.numbers.count {number-> results.contains(number)}):bet.player]
+		def allMatches = allBets.collect{bet->
+			[winnings:(bet.numbers.count {number-> results.contains(number)}),player:bet.player]
 		}
+		
+		allMatches.groupBy {winner->
+			winner.winnings
+		}
+		
+		
+		
 	}
 }
