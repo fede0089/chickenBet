@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'jquery.dataTables.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datatables.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'TableTools.css')}" type="text/css">
-
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
@@ -31,6 +30,7 @@
 		<g:javascript src="typeahead.min.js" />
 		<g:javascript src="jquery.dataTables.min.js" />
 		<g:javascript src="datatables.js" />
+		<g:javascript src="ZeroClipboard.js" />
 		<g:javascript src="TableTools.js" />
 		<r:layoutResources />
 	</body>

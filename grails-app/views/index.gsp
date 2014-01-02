@@ -11,7 +11,7 @@
 		  </br>
 		  </br>
 		  <p class="text-center"><g:link action="list" controller="bet" class="btn btn-danger btn-lg">Ver apuestas</g:link></p>
-		  <p class="text-center"><g:link class="btn btn-danger btn-lg">Sorteo</g:link></p>
+		  <p class="text-center"><g:link  action="loadResults" controller="bet" c class="btn btn-danger btn-lg">Sorteo</g:link></p>
 		  <p class="text-center"><g:link class="btn btn-danger btn-lg">Historial</g:link></p>
 
 		</div>

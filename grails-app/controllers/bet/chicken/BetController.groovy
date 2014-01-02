@@ -1,7 +1,5 @@
 package bet.chicken
-
 class BetCommandObject{
-	String alias
 	List<Integer> numbers
 }
 
@@ -12,26 +10,29 @@ class BetController {
 
 	static scaffold  = true
 
-	def createBetForm(){
-
-	}
-
-	def createBet(BetCommandObject bco) {
+	def createBet(BetCommandObject bco,	String alias) {
 		try{
-			def player= betService.createBet(bco)
+			def player= betService.createBet(bco,alias)
 		}
 		catch (BetException e){
 			//TO-DO
 		}
 		
 		render status:200
+	}
 	
+	def loadResults(){
 		
 	}
 	
 	def list(){
 		def bets = betService.list()
 		[bets:bets]
+	}
+	
+	def checkWinners(BetCommandObject bco){
+		def winners = betService.checkWinners(bco)
+		[winners:winners]
 	}
 	
 }

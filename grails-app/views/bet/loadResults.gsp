@@ -1,0 +1,20 @@
+<head>
+	<meta name="layout" content="main" />
+</head>
+<body>
+<div class="row">
+	<g:form action="checkWinners">
+		<g:each in="${1..4}" var="col">
+			<div class="col-md-3">
+				<g:each in="${0..9}" var="fila">
+					<g:textField class="form-control text-center" placeholder="Nro ${col+4*fila}" value="${(col+4*fila)-1}" name="numbers[${(col+4*fila)-1}]"/>
+					</br>
+				</g:each>
+			</div>
+		</g:each>
+		<div class="text-center">
+			<g:submitButton name="submitButton" value="Sortear" class="btn btn-danger btn-lg"/>
+		</div>
+	</g:form>
+</div>
+</body>
