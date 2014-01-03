@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'jquery.dataTables.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datatables.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'TableTools.css')}" type="text/css">
+		<g:javascript library="jquery" plugin="jquery"/>		
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
@@ -24,7 +25,6 @@
 		</div>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<g:javascript src="jquery-1.10.2.min.js" />
 		<g:javascript src="bootstrap.min.js" />
 		<g:javascript src="validator.js"/>
 		<g:javascript src="typeahead.min.js" />

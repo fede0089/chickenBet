@@ -116,3 +116,6 @@ grails {
     }
 }
 remove this line */
+
+grails.views.javascript.library="jquery"
+
