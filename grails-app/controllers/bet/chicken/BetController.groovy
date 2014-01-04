@@ -11,11 +11,13 @@ class BetController {
 	static scaffold  = true
 
 	def createBet(BetCommandObject bco,	String alias) {
+		def player
+		
 		try{
-			def player= betService.createBet(bco,alias)
+			player= betService.createBet(bco,alias)
 		}
 		catch (BetException e){
-			//TO-DO
+			//TODO - Throw exception
 		}
 		
 		render status:200
@@ -26,12 +28,24 @@ class BetController {
 	}
 	
 	def list(){
-		def bets = betService.list()
+		def bets
+		try{
+			bets = betService.list()	
+		}
+		catch (BetException e){
+			//TODO - Throw exception
+		}
 		[bets:bets]
 	}
 	
 	def checkWinners(BetCommandObject bco){
-		def winners = betService.checkWinners(bco)
+		def winners
+		try{
+			winners = betService.checkWinners(bco)
+		}
+		catch (BetException e){
+			//TODO - Throw exception
+		}
 		[winners:winners]
 	}
 	
