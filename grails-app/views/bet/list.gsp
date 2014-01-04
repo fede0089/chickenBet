@@ -1,5 +1,19 @@
 <head>
 	<meta name="layout" content="main" />
+	<style>
+	/* Header cells */
+		table.pretty thead th {
+		    text-align: center;
+		    background-color: #d9534f !important;
+		    color:white;
+		    
+		}
+		
+		#betTable_filter {
+			color:white;
+		}
+		
+	</style>
 </head>
 <body>
 	<div class="modal fade" id="newBet">
@@ -42,7 +56,7 @@
 	
 	
 	<p><a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#newBet"><span class="glyphicon glyphicon-plus"></span> Nueva apuesta</a></p>
-	<table class ="table table-hover" id="betTable">
+	<table class ="table table-hover pretty" id="betTable">
 		<thead>
 			<tr class="success">
 				<th class="text-center">Apodo</th>
@@ -111,7 +125,7 @@
 		    "oTableTools": {   
 					"sSwfPath": "../swf/copy_csv_xls_pdf.swf"
 		           
-		   }		          
+		   }
 		  });
 		  
 		 $("#alias").typeahead([

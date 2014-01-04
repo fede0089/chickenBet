@@ -34,7 +34,7 @@ class PlayerController {
 			//TODO - Throw exception
 		}
 	
-		render (!player)? [status:404]:[status:200]
+		render status:((!player)?404:200)
 			
 	}
 }

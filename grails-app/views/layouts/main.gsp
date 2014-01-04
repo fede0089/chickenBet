@@ -17,13 +17,14 @@
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
-	<body>
-		<div role="banner"><a href="/ChickenBet"><g:img file="logo.png" style="height:100px;"/></a></div>
+	<body style="background-color:#630687;">
+		<div><a href="/ChickenBet"><g:img file="logo.png" style="height:100px;"/></a></div>
+		<g:img file="balls.png" style="position:absolute;top:0;right:0;"/>
 		<div class="container">
 			<div id="messages"></div>
 			<g:layoutBody/>
 		</div>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript src="bootstrap.min.js" />
 		<g:javascript src="validator.js"/>

@@ -24,8 +24,6 @@
 				</div>			
 		</g:each>
 		</ul>
-		<g:link class="btn btn-danger btn-lg btn pull-right"  >Volver</g:link>
-		
 		<g:javascript>
 		$(document).ready(function(){
 			$('.winnerPopover').popover();
