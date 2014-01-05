@@ -41,9 +41,8 @@
 	        </div><!-- /.navbar-collapse -->
 	      </div><!-- /.container -->
 	    </nav>
-		<div><a href="/ChickenBet"><g:img file="logo.png" style="height:100px;"/></a></div>
 		<g:img file="balls.png" style="position:absolute;top:110;right:0;"/>
-		<div class="container">
+		<div class="container" style="margin-top: 115px;">
 			</br>
 			</br>
 			<div id="messages"></div>
