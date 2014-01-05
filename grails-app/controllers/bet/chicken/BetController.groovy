@@ -46,7 +46,7 @@ class BetController {
 		catch (BetException e){
 			//TODO - Throw exception
 		}
-		[winners:winners]
+		render template:'checkWinners',model:[winners:winners]
 	}
 	
 }
