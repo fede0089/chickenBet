@@ -139,7 +139,7 @@ function TableTools ( oInit )
 			clip.setText( fnGetDataTablesData(",") );
 		} );
 		
-		fnGlue( clip, nButton, "ToolTables_CSV_"+_iId, "Save as CSV" );
+		fnGlue( clip, nButton, "ToolTables_CSV_"+_iId, "Guardar como CSV" );
 	}
 	
 	
@@ -176,7 +176,7 @@ function TableTools ( oInit )
 			clip.setText( fnGetDataTablesData("\t") );
 		} );
 		
-		fnGlue( clip, nButton, "ToolTables_XLS_"+_iId, "Save for Excel" );
+		fnGlue( clip, nButton, "ToolTables_XLS_"+_iId, "Guardar como XLS" );
 	}
 	
 	
@@ -214,10 +214,10 @@ function TableTools ( oInit )
 		
 		clip.addEventListener('complete', function (client, text) {
 			var aData = _sLastData.split('\n');
-			alert( 'Copied '+(aData.length-2)+' rows to the clipboard' );
+			alert( (aData.length-2)+' filas copiadas al portapapeles.' );
 		} );
 		
-		fnGlue( clip, nButton, "ToolTables_Copy_"+_iId, "Copy to clipboard" );
+		fnGlue( clip, nButton, "ToolTables_Copy_"+_iId, "Copiar al portapapeles" );
 	}
 	
 	
@@ -238,7 +238,7 @@ function TableTools ( oInit )
 		nButton.style.height = _oSettings.iButtonHeight+'px';
 		nButton.style.width = _oSettings.iButtonWidth+'px';
 		nButton.className = sBaseClass;
-		nButton.title = "Print table";
+		nButton.title = "Imprimir";
 		_nTools.appendChild( nButton );
 		
 		/* Could do this in CSS - but might as well be consistent with the flash buttons */
@@ -275,8 +275,7 @@ function TableTools ( oInit )
 			/* Add a node telling the user what is going on */
 			var nInfo = document.createElement( "div" );
 			nInfo.className = "TableTools_PrintInfo";
-			nInfo.innerHTML = "<h6>Print view</h6><p>Please use your browser's print function to "+
-				"print this table. Press escape when finished.";
+			nInfo.innerHTML = "<h6>Modo impresion</h6><p> Por favor utilice la funcion del navegador para imprimir. Presione la tecla ESCAPE cuando haya finalizado.";
 			document.body.appendChild( nInfo );
 			
 			/* Add a message at the top of the page */
@@ -292,13 +291,13 @@ function TableTools ( oInit )
 			_iPrintScroll = $(window).scrollTop();
 			window.scrollTo( 0, 0 );
 			
-			$(document).bind( "keypress", null, fnPrintEnd );
+			$(document).bind( "keyup", null, fnPrintEnd );
 			
 			setTimeout( function() {
 				$(nInfo).fadeOut( "normal", function() {
 					document.body.removeChild( nInfo );
 				} );
-			}, 2000 );
+			}, 5000 );
 		} );
 	}
 	
@@ -313,8 +312,11 @@ function TableTools ( oInit )
 	 * Returns:  -
 	 * Inputs:   event
 	 */
-	function fnPrintEnd ( e )
+	function fnPrintEnd ( e)			
 	{
+		
+		e.preventDefault();
+		
 		/* Only interested in the escape key */
 		if ( e.keyCode == 27 )
 		{

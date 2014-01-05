@@ -18,9 +18,34 @@
 		<r:layoutResources />
 	</head>
 	<body style="background-color:rgb(168, 70, 206);">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#510868;">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+	          <a class="navbar-brand logo-nav" href="/ChickenBet"><g:img file="logo2.png"/></a>
+	        </div>
+	
+	        <!-- Collect the nav links, forms, and other content for toggling -->
+	        <div class="collapse navbar-collapse navbar-ex1-collapse">
+	          <ul class="nav navbar-nav navbar-right">
+	            <li><g:link action="list" controller="bet"><h4>Ver apuestas</h4></g:link></li>
+	            <li><g:link action="loadResults" controller="bet"><h4>Sorteo</h4></g:link></li>
+	            <li><g:link action="loadResults" controller="bet"><h4>Historial</h4></g:link></li>
+	          </ul>
+	        </div><!-- /.navbar-collapse -->
+	      </div><!-- /.container -->
+	    </nav>
 		<div><a href="/ChickenBet"><g:img file="logo.png" style="height:100px;"/></a></div>
-		<g:img file="balls.png" style="position:absolute;top:0;right:0;"/>
+		<g:img file="balls.png" style="position:absolute;top:110;right:0;"/>
 		<div class="container">
+			</br>
+			</br>
 			<div id="messages"></div>
 			<g:layoutBody/>
 		</div>
