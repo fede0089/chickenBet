@@ -28,7 +28,7 @@ class PlayerController {
 	def verifyPlayerExistance(String alias){
 		def player
 		try {
-			playerService.getPlayer(alias)
+			player = playerService.getPlayer(alias)
 		}
 		catch (PlayerException p){
 			//TODO - Throw exception

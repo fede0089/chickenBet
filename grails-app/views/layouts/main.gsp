@@ -17,7 +17,7 @@
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
-	<body style="background-color:#630687;">
+	<body style="background-color:rgb(168, 70, 206);">
 		<div><a href="/ChickenBet"><g:img file="logo.png" style="height:100px;"/></a></div>
 		<g:img file="balls.png" style="position:absolute;top:0;right:0;"/>
 		<div class="container">

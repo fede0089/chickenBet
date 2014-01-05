@@ -16,7 +16,7 @@
 					<div class="form-control-mock">
 						<g:textField class="form-control text-center validateable" placeholder="Nro ${col+4*fila}" 
 						value="${(col+4*fila)-1}" name="numbers[${(col+4*fila)-1}]" autocomplete="off"
-						nonempty="true" />
+						nonempty="true" numeric data-range="0..99"/>
 						</br>
 					</div>
 				</g:each>

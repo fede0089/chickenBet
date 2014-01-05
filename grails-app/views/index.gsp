@@ -11,8 +11,6 @@
 	</head>
 	<body>
 		<div class="container">
-		  <h1 class="text-center" style="color:white;">¿Que desea hacer?</h1>
-		  </br>
 		  </br>
 		  <p class="text-center"><g:link action="list" controller="bet" class="btn btn-danger btn-lg btn-custom">
 		      <span class="glyphicon glyphicon-usd a-btn-symbol"></span> Ver apuestas		  
