@@ -15,7 +15,7 @@
 					</g:each>
 				</g:if>
 				<g:else>
-					<span class="label label-danger">VACANTE</span>
+					<span style="font-size:20px;" class="label label-danger">VACANTE</span>
 				</g:else>
 		  </div>
 		</div>			

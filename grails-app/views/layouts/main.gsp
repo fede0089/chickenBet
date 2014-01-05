@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'jquery.dataTables.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datatables.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'TableTools.css')}" type="text/css">
+		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datepicker.css')}" type="text/css">
 		<g:javascript library="jquery" plugin="jquery"/>		
 		<g:layoutHead/>
 		<r:layoutResources />
@@ -41,7 +42,7 @@
 	        </div><!-- /.navbar-collapse -->
 	      </div><!-- /.container -->
 	    </nav>
-		<g:img file="balls.png" style="position:absolute;top:110;right:0;"/>
+		<g:img file="balls.png" style="height:80%;position:absolute;top:110;right:0;z-index:-99"/>
 		<div class="container" style="margin-top: 115px;">
 			</br>
 			</br>
@@ -57,6 +58,7 @@
 		<g:javascript src="datatables.js" />
 		<g:javascript src="ZeroClipboard.js" />
 		<g:javascript src="TableTools.js" />
+		<g:javascript src="bootstrap-datepicker.js" />
 		<r:layoutResources />
 	</body>
 </html>

@@ -1,5 +1,10 @@
 package bet.chicken
+import org.grails.databinding.BindingFormat
+
 class BetCommandObject{
+	
+	@BindingFormat('dd/MM/yyyy')
+	Date date
 	List<Integer> numbers
 }
 
@@ -42,6 +47,7 @@ class BetController {
 		def winners
 		try{
 			winners = betService.checkWinners(bco)
+			betService.saveHistory(bco,winners)
 		}
 		catch (BetException e){
 			//TODO - Throw exception

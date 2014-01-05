@@ -21,7 +21,7 @@
 		  <p class="text-center"><g:link class="btn btn-danger btn-lg btn-custom">
 		  	<span class="glyphicon glyphicon-folder-open"></span>  Historial
 		  </g:link></p>
-		  <g:img file="ruleta.png" style="position:absolute;bottom:0;left:0; z-index:-99;"/>
+		  <g:img file="ruleta.png" style="width:90%;position:absolute;bottom:0;left:0; z-index:-99;"/>
 		</div>
 	</body>
 </html>
