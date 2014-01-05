@@ -53,8 +53,17 @@ class BetService {
 		allMatches.groupBy {winner->
 			winner.winnings
 		}
-
-
-
+	}
+	
+	def saveHistory (BetCommandObject bco,winners){
+		//TODO
+		
+		def lotteryResults = new LotteryResults(results:bco.numbers)
+	
+		def history = new History(lotteryDate:bco.date,results:lotteryResults,winners:winners).save()
+		
+		if (!history)
+			throw new BetException(message:"Error al guardar la historia")
+			
 	}
 }

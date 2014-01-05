@@ -1,7 +1,7 @@
 package bet.chicken
 
 class History {
-	Map<Integer,String> winnings
+	List<Map<Integer,Player>> winnings
 	Date lotteryDate
 	LotteryResults results
 	
