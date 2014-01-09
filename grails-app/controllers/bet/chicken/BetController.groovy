@@ -1,4 +1,6 @@
 package bet.chicken
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
 import org.grails.databinding.BindingFormat
 
 class BetCommandObject{
@@ -10,10 +12,9 @@ class BetCommandObject{
 
 class BetController {
 
-	def betService
-	def playerService
+	BetService betService
+	PlayerService playerService
 
-	static scaffold  = true
 
 	def createBet(BetCommandObject bco,	String alias) {
 		def player
@@ -41,6 +42,27 @@ class BetController {
 			//TODO - Throw exception
 		}
 		[bets:bets]
+	}
+	
+	def history(){
+		
+	}
+	
+	//BetCommandObject used only to bind date
+	def getHistoryByDate(BetCommandObject bco){
+		def history
+		try{
+			history = betService.getHistoryByDate(bco.date)
+			render template:"history",model:[history:history]
+		}
+		catch (BetException e){
+			def dateToFormat= new DateTime(bco.date)
+			def date = DateTimeFormat.forPattern("EEEE dd/MM/yyyy").print(dateToFormat)
+			render """<span style='color:white;'>No se registra un sorteo para la fecha <b><i>${date}</i></b></span></span>
+					<g:link class='btn btn-danger' onClick='document.location.reload(true)'> Volver </g:link>"""
+		}
+		
+		
 	}
 	
 	def checkWinners(BetCommandObject bco){

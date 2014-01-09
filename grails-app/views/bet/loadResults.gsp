@@ -57,7 +57,9 @@
 		</g:formRemote>
 		
 		<g:javascript>
-			$("#datepicker").datepicker();
+			$(document).ready(function(){
+				$("#datepicker").datepicker();
+			})
 		</g:javascript>
 		
 	</div>

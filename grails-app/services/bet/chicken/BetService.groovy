@@ -12,7 +12,7 @@ class BetService {
 	def createBet(BetCommandObject bco,String alias) {
 
 		def player = Player.findByAlias(alias)
-		def bet = new Bet(numbers:bco.numbers)
+		def bet = new CurrentBet(numbers:bco.numbers)
 		if (player)
 			player.addToCurrentBets(bet).save()
 		else
@@ -21,7 +21,11 @@ class BetService {
 	}
 
 	def list(){
-		Bet.list()
+		CurrentBet.list()
+	}
+	
+	def listOldBets(){
+		OldBet.list()
 	}
 
 	def checkWinners(BetCommandObject bco){
@@ -59,11 +63,26 @@ class BetService {
 		//TODO
 		
 		def lotteryResults = new LotteryResults(results:bco.numbers)
+		
+		def betsToSave = CurrentBet.list().collect {actualBet->
+			def betToSave = new OldBet()
+			betToSave.properties=actualBet.properties
+			betToSave.lotteryDate = bco.date
+			betToSave.playerName=actualBet.player.alias
+			betToSave
+		}
 	
-		def history = new History(lotteryDate:bco.date,results:lotteryResults,winners:winners).save()
+		def history = new History(lotteryDate:bco.date,results:lotteryResults,winners:winners,oldBets:betsToSave).save()
 		
 		if (!history)
 			throw new BetException(message:"Error al guardar la historia")
 			
+	}
+	
+	def getHistoryByDate(Date lotteryDate){
+		def history = History.findByLotteryDate(lotteryDate)
+		if (!history)
+			throw new BetException(message:"History not found")
+		history
 	}
 }

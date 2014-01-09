@@ -37,14 +37,13 @@
 	          <ul class="nav navbar-nav navbar-right">
 	            <li><g:link action="list" controller="bet"><h4>Ver apuestas</h4></g:link></li>
 	            <li><g:link action="loadResults" controller="bet"><h4>Sorteo</h4></g:link></li>
-	            <li><g:link action="loadResults" controller="bet"><h4>Historial</h4></g:link></li>
+	            <li><g:link action="history" controller="bet"><h4>Historial</h4></g:link></li>
 	          </ul>
 	        </div><!-- /.navbar-collapse -->
 	      </div><!-- /.container -->
 	    </nav>
 		<g:img file="balls.png" style="height:80%;position:absolute;top:110;right:0;z-index:-99"/>
 		<div class="container" style="margin-top: 115px;">
-			</br>
 			</br>
 			<div id="messages"></div>
 			<g:layoutBody/>

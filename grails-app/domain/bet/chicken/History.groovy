@@ -4,8 +4,9 @@ class History {
 	List<Map<Integer,Player>> winnings
 	Date lotteryDate
 	LotteryResults results
+
 	
-	static hasMany=[players:Player]
+	static hasMany=[oldBets:OldBet]
 
     static constraints = {
     }
