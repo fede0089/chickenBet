@@ -13,20 +13,20 @@ hibernate {
 environments {
     development {
 		
-		/*
+		
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
-		*/
-			
+		
+		/*	
 		dataSource {			
 				dbCreate = "create-drop"			
 				url = "jdbc:sqlserver://FEDERICOM-PC:1433;"
 				driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"	
 				username = "sa"			
 				password = "34847863"			
-		}
+		}*/
     }
     test {
         dataSource {

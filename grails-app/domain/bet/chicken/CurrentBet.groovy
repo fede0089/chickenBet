@@ -6,4 +6,5 @@ class CurrentBet extends Bet{
 	
     static constraints = {
     }
+	
 }

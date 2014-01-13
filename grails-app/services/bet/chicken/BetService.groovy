@@ -20,6 +20,14 @@ class BetService {
 
 	}
 
+	def removeBet(playerId,betId){
+		def player = Player.get(playerId)
+		def bet = CurrentBet.get(betId)
+		if (!player.currentBets.remove(bet))
+			throw new BetException(message:"Not found")
+		
+	}
+	
 	def list(){
 		CurrentBet.list()
 	}

@@ -8,5 +8,9 @@ class Player {
 	static constraints = {
 		currentBets minSize:0
 	}
+	
+	static mapping = {
+		currentBets cascade: "all-delete-orphan"
+	}
 
 }

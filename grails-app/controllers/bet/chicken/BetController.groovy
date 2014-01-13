@@ -77,4 +77,18 @@ class BetController {
 		render template:'checkWinners',model:[winners:winners]
 	}
 	
+	def removeBet(String playerId,String betId){
+		try {
+			betService.removeBet(playerId,betId)
+			def bets = betService.list()
+			render template:"list",model:[bets:bets],status:200
+		}
+		catch (BetException be){
+			render status:404
+		}
+		catch(Exception e){
+			render status:500
+		}
+	}
+	
 }
