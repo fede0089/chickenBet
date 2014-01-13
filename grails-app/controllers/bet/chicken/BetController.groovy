@@ -58,8 +58,7 @@ class BetController {
 		catch (BetException e){
 			def dateToFormat= new DateTime(bco.date)
 			def date = DateTimeFormat.forPattern("EEEE dd/MM/yyyy").print(dateToFormat)
-			render """<span style='color:white;'>No se registra un sorteo para la fecha <b><i>${date}</i></b></span></span>
-					<g:link class='btn btn-danger' onClick='document.location.reload(true)'> Volver </g:link>"""
+			render "<span style='color:white;'>No se registra un sorteo para la fecha <b><i>${date}</i></b></span></span>"
 		}
 		
 		

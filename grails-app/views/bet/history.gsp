@@ -19,7 +19,7 @@
 		</br>
 		<g:formRemote name="getHistoryForm" url="['action':'getHistoryByDate']" update="history" class="form-inline" onComplete="initDataTable()">
 		
-			<div class="form-group col-md-3">
+			<div class="form-group col-md-4 col-md-offset-4">
 					<div class="input-group date " 
 						data-date-format="dd/mm/yyyy" id="datepicker" data-date="12-02-2012">
 						<g:textField name="date" class="form-control text-center validateable" placeholder="Fecha del sorteo" nonempty readonly="true" />
