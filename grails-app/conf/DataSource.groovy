@@ -19,6 +19,13 @@ environments {
             url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
 		
+		grails {
+			mongo {
+				host = "127.0.0.1"
+				port = 27017
+				databaseName = "chickenBet"
+			}
+		}
 		/*	
 		dataSource {			
 				dbCreate = "create-drop"			
@@ -61,6 +68,16 @@ environments {
 			url = "jdbc:postgresql://"+uri.host+uri.path
 			username = uri.userInfo.split(":")[0]
 			password = uri.userInfo.split(":")[1]
+		}
+		
+		grails {
+			mongo {
+				host = "dharma.mongohq.com"
+				port = 10081
+				username = "fede0089"
+				password = "jefe2013"
+				databaseName = "chickenBet"
+			}
 		}
     }
 }

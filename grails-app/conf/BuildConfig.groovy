@@ -51,7 +51,9 @@ grails.project.dependency.resolution = {
 
 		compile ':cache:1.0.1'
 		compile ":joda-time:1.4"
-		
+		compile(":mongodb:1.3.1"){
+			excludes 'javassist'
+		}
         //runtime ":hibernate:$grailsVersion"
         runtime ':hibernate:3.6.10.6'
         runtime ":jquery:1.10.2.2"
