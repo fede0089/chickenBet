@@ -22,11 +22,11 @@ environments {
 		grails {
 			mongo {
 				host = "127.0.0.1"
-				port = 27017
+				port = s
 				databaseName = "chickenBet"
 			}
 		}
-		/*	
+			/*
 		dataSource {			
 				dbCreate = "create-drop"			
 				url = "jdbc:sqlserver://FEDERICOM-PC:1433;"
@@ -76,7 +76,7 @@ environments {
 				port = 10081
 				username = "fede0089"
 				password = "jefe2013"
-				databaseName = "chickenBet"
+				databaseName = "app21224692"
 			}
 		}
     }
