@@ -79,8 +79,12 @@ class BetService {
 			betToSave.playerName=actualBet.player.alias
 			betToSave
 		}
+		
+		def sevenWinners=winners[7]?winners[7]*.player.alias:[]
+		def sixWinners=winners[6]?winners[6]*.player.alias:[]
+		def fiveWinners=winners[5]?winners[5]*.player.alias:[]			
 	
-		def history = new History(lotteryDate:bco.date,results:lotteryResults,winners:winners,oldBets:betsToSave).save()
+		def history = new History(lotteryDate:bco.date,results:lotteryResults,sevenWinners:sevenWinners,sixWinners:sixWinners,fiveWinners:fiveWinners,,oldBets:betsToSave).save()
 		
 		if (!history)
 			throw new BetException(message:"Error al guardar la historia")

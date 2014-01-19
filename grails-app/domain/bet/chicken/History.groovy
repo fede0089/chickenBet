@@ -1,7 +1,9 @@
 package bet.chicken
 
 class History {
-	List<Map<Integer,Player>> winnings
+	List<String> sevenWinners
+	List<String> fiveWinners
+	List<String> sixWinners
 	Date lotteryDate
 	LotteryResults results
 	List<OldBet> oldBets

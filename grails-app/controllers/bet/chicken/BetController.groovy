@@ -57,7 +57,7 @@ class BetController {
 		}
 		catch (BetException e){
 			def dateToFormat= new DateTime(bco.date)
-			def date = DateTimeFormat.forPattern("EEEE dd/MM/yyyy").print(dateToFormat)
+			def date = DateTimeFormat.forPattern("EEEE dd/MM/yyyy").withLocale(new Locale("es", "ES")).print(dateToFormat)
 			render "<span style='color:white;'>No se registra un sorteo para la fecha <b><i>${date}</i></b></span></span>"
 		}
 		
