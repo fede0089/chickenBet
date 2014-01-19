@@ -21,7 +21,7 @@
 		  <p class="text-center"><g:link class="btn btn-danger btn-lg btn-custom" action="history" controller="bet" >
 		  	<span class="glyphicon glyphicon-folder-open pull-left"></span>  Historial
 		  </g:link></p>
-		  <g:img file="ruleta.png" style="width:70%;position:absolute;bottom:0;left:0; z-index:-99;"/>
+		  <g:img file="ruleta_sm.png" style="width:70%;position:absolute;bottom:0;left:0; z-index:-99;"/>
 		</div>
 	</body>
 </html>
