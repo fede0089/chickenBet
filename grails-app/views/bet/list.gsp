@@ -177,7 +177,25 @@
 		                     { "bSortable": false, "aTargets": [ 1,2,3,4,5,6,7,8 ] }
 		                    ],
 		    "oTableTools": {   
-					"sSwfPath": "../swf/copy_csv_xls_pdf.swf"		           
+					"sSwfPath": "../swf/copy_csv_xls_pdf.swf",
+					"aButtons": [
+			            {
+			                "sExtends": "copy",
+			                "mColumns": [0, 1, 2, 3,4,5,6,7]
+			            },
+			            {
+			                "sExtends": "csv",
+			                "mColumns": [0, 1, 2, 3,4,5,6,7]
+			            },
+			            {
+			                "sExtends": "pdf",
+			                "mColumns": [0, 1, 2, 3,4,5,6,7]
+			            },
+			            {
+			                "sExtends": "print",
+			                "mColumns": [0, 1, 2, 3,4,5,6,7]
+			            }
+			        ]		           
 		   }
 		  });
 	}
