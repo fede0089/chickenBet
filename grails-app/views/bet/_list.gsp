@@ -9,7 +9,7 @@
 			<th></th>
 			<th></th>
 			<th></th>
-			<th class="text-center">Eliminar</th>
+			<th class="text-center hiddenCol">Eliminar</th>
 	</thead>
 	<tbody>
 		<g:each in="${bets}" var="bet">
@@ -18,7 +18,7 @@
 				<g:each in="${0..6}">
 					<td class="text-center">${bet.numbers[it]}</td>
 				</g:each>
-				<td class="text-center"><g:remoteLink action="removeBet" controller="bet" params="[playerId:bet.player.id,betId:bet.id]" update="betTableWrapper" onSuccess="refreshDataTable()" onFailure="showRemoveError(XMLHttpRequest)" ><span class="glyphicon glyphicon-remove"></span></g:remoteLink></td>
+				<td class="text-center hiddenCol"><g:remoteLink action="removeBet" controller="bet" params="[playerId:bet.player.id,betId:bet.id]" update="betTableWrapper" onSuccess="refreshDataTable()" onFailure="showRemoveError(XMLHttpRequest)" ><span class="glyphicon glyphicon-remove"></span></g:remoteLink></td>
 			</tr>	
 		</g:each>
 	</tbody>
@@ -32,7 +32,7 @@
 			<th></th>
 			<th></th>
 			<th></th>
-			<th></th>
+			<th class="hiddenCol"></th>
 		</tr>
 	</tfoot>
 </table>

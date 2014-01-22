@@ -388,6 +388,18 @@ function TableTools ( oInit )
 			}
 		}
 		
+		//Custom-hide columns 
+		if (nNode.localName=="table"){
+			$("#"+nNode.id+" th.hiddenCol").each(function(){
+				_aoPrintHidden.push({node:this,display:""});
+				$(this).hide();
+			});
+			$("#"+nNode.id+" td.hiddenCol").each(function(){
+				_aoPrintHidden.push({node:this,display:""});
+				$(this).hide();
+			});
+		}
+		
 		if ( nParent.nodeName != "BODY" )
 		{
 			fnPrintHideNodes( nParent );
