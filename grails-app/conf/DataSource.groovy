@@ -42,28 +42,12 @@ environments {
         }
     }
     production {
-       /* dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-            pooled = true
-            properties {
-               maxActive = -1
-               minEvictableIdleTimeMillis=1800000
-               timeBetweenEvictionRunsMillis=1800000
-               numTestsPerEvictionRun=3
-               testOnBorrow=true
-               testWhileIdle=true
-               testOnReturn=true
-               validationQuery="SELECT 1"
-            }
-        }*/
-		
-		dataSource {
+       	dataSource {
 			dbCreate = "update"
 			driverClassName = "org.postgresql.Driver"
 			dialect = org.hibernate.dialect.PostgreSQLDialect
 	
-			uri = new URI(System.env.DATABASE_URL?:"postgres://yeskqtselqptmf:VpCEQiJZwAPzl5yj5bIek4_B3W@ec2-23-23-183-5.compute-1.amazonaws.com:5432/db2m1o7h97uncj")
+			uri = new URI(System.env.DATABASE_URL?:"postgres://hvloynyscetfng:ltnJbihELjrxxQqfxoeafFDf3a@ec2-54-225-101-164.compute-1.amazonaws.com:5432/d4jk63odbb4ctq")
 	
 			url = "jdbc:postgresql://"+uri.host+uri.path
 			username = uri.userInfo.split(":")[0]
