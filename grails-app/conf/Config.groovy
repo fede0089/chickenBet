@@ -132,6 +132,16 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
+	'/**/media/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll']
 ]
 
+
+grails.plugins.springsecurity.secureChannel.useHeaderCheckChannelSecurity = true
+grails.plugins.springsecurity.portMapper.httpPort = 80
+grails.plugins.springsecurity.portMapper.httpsPort = 443
+grails.plugins.springsecurity.secureChannel.secureHeaderName = 'X-FORWARDED-PROTO'
+grails.plugins.springsecurity.secureChannel.secureHeaderValue = 'http'
+
+grails.plugins.springsecurity.secureChannel.insecureHeaderName = 'X-FORWARDED-PROTO'
+grails.plugins.springsecurity.secureChannel.insecureHeaderValue = 'https'
