@@ -121,22 +121,22 @@ grails.views.javascript.library="jquery"
 
 
 
-// Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'bet.chicken.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bet.chicken.UserRole'
-grails.plugin.springsecurity.authority.className = 'bet.chicken.Role'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/media/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
-]
-
-
-grails.plugins.springsecurity.secureChannel.definition = [
-	'/**':        'ANY_CHANNEL'
- ]
+//// Added by the Spring Security Core plugin:
+//grails.plugin.springsecurity.userLookup.userDomainClassName = 'bet.chicken.User'
+//grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bet.chicken.UserRole'
+//grails.plugin.springsecurity.authority.className = 'bet.chicken.Role'
+//grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+//	'/':                              ['permitAll'],
+//	'/index':                         ['permitAll'],
+//	'/index.gsp':                     ['permitAll'],
+//	'/**/js/**':                      ['permitAll'],
+//	'/**/css/**':                     ['permitAll'],
+//	'/**/images/**':                  ['permitAll'],
+//	'/**/media/**':                  ['permitAll'],
+//	'/**/favicon.ico':                ['permitAll']
+//]
+//
+//
+//grails.plugins.springsecurity.secureChannel.definition = [
+//	'/**':        'ANY_CHANNEL'
+// ]

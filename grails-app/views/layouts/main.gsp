@@ -38,13 +38,13 @@
 	            <li><g:link action="list" controller="bet"><h4>Ver apuestas</h4></g:link></li>
 	            <li><g:link action="loadResults" controller="bet"><h4>Sorteo</h4></g:link></li>
 	            <li><g:link action="history" controller="bet"><h4>Historial</h4></g:link></li>
-	            <sec:ifLoggedIn>
-	           		<li>
-	           			<h4 style="margin-top:10px;margin-bottom:10px;padding:10px 15px;color:grey;line-height:20px;padding-top:15px;padding-bottom:15px;">Bienvenido, <sec:username/>
-	           			<g:remoteLink controller='logout' onSuccess="window.location.reload(true)"> (Salir) </g:remoteLink>
-	           			</h4>
-	           		</li>
-	           	</sec:ifLoggedIn>
+<%--	            <sec:ifLoggedIn>--%>
+<%--	           		<li>--%>
+<%--	           			<h4 style="margin-top:10px;margin-bottom:10px;padding:10px 15px;color:grey;line-height:20px;padding-top:15px;padding-bottom:15px;">Bienvenido, <sec:username/>--%>
+<%--	           			<g:remoteLink controller='logout' onSuccess="window.location.reload(true)"> (Salir) </g:remoteLink>--%>
+<%--	           			</h4>--%>
+<%--	           		</li>--%>
+<%--	           	</sec:ifLoggedIn>--%>
 	          </ul>
 	        </div><!-- /.navbar-collapse -->
 	      </div><!-- /.container -->

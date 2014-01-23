@@ -1,5 +1,5 @@
 package bet.chicken
-import grails.plugin.springsecurity.annotation.Secured
+//import grails.plugin.springsecurity.annotation.Secured
 import grails.converters.JSON
 
 class PlayerException extends RuntimeException{
@@ -7,7 +7,7 @@ class PlayerException extends RuntimeException{
 	Player player
 }
 
-@Secured(['ROLE_ADMIN'])
+//@Secured(['ROLE_ADMIN'])
 class PlayerController {
 	
 	def playerService
