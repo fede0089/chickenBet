@@ -37,6 +37,8 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
 		mavenRepo 'http://repo.spring.io/milestone'
+		mavenRepo "http://files.couchbase.com/maven2"
+		
     }
 
     dependencies {
@@ -45,11 +47,11 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.22'
 		runtime 'postgresql:postgresql:8.4-702.jdbc3'
 		
+		
     }
 
     plugins {
-
-
+		compile ":database-session:1.2.1"
 		compile ':cache:1.0.1'
 		compile ":joda-time:1.4"
 		compile(":mongodb:1.3.1"){

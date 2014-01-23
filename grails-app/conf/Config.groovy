@@ -119,8 +119,6 @@ remove this line */
 
 grails.views.javascript.library="jquery"
 
-
-
 //// Added by the Spring Security Core plugin:
 //grails.plugin.springsecurity.userLookup.userDomainClassName = 'bet.chicken.User'
 //grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bet.chicken.UserRole'
