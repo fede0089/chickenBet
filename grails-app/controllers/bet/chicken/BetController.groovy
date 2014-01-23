@@ -1,5 +1,5 @@
 package bet.chicken
-import grails.plugin.springsecurity.annotation.Secured
+//import grails.plugin.springsecurity.annotation.Secured
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import org.grails.databinding.BindingFormat
@@ -10,7 +10,7 @@ class BetCommandObject{
 	Date date
 	List<Integer> numbers
 }
-@Secured(['ROLE_ADMIN'])
+//@Secured(['ROLE_ADMIN'])
 class BetController {
 
 	BetService betService
