@@ -55,7 +55,7 @@ grails.project.dependency.resolution = {
 		compile(":mongodb:1.3.1"){
 			excludes 'javassist'
 		}
-//		compile ':spring-security-core:2.0-RC2'
+		compile ':spring-security-core:2.0-RC2'
         //runtime ":hibernate:$grailsVersion"
         runtime ':hibernate:3.6.10.6'
         runtime ":jquery:1.10.2.2"
