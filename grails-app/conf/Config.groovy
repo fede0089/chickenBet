@@ -154,6 +154,6 @@ grails.views.javascript.library="jquery"
 
 cache{
 	duration = 42200;
-	servers = "127.0.0.1:2550";
+	servers = "127.0.0.1:11211";
 }
 
