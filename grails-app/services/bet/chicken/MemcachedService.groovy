@@ -435,6 +435,7 @@ class MemcachedService implements InitializingBean,Persister {
 			session.creationTime = System.currentTimeMillis()
 			session.lastAccessedTime = session.creationTime
 			session.id = sessionId
+			session.maxInactiveInterval = 30
 			put(sessionId,session)
 			
 		}
@@ -478,8 +479,10 @@ class MemcachedService implements InitializingBean,Persister {
 	@Override
 	public boolean isValid(String sessionId) {
 		def session = get(sessionId)
-		def isValid = !session.invalidated && session.lastAccessedTime > System.currentTimeMillis() - session.maxInactiveInterval * 1000 * 60
-		session && isValid
+		if (session)
+			!session.invalidated && session.lastAccessedTime > System.currentTimeMillis() - session.maxInactiveInterval * 1000 * 60
+		else
+			false
 	}
 	
 	protected void handleException(e) {

@@ -53,14 +53,13 @@ grails.project.dependency.resolution = {
 		compile ":database-session:1.2.1"
 		compile ':cache:1.0.1'
 		compile ":joda-time:1.4"
-		compile(":mongodb:1.3.1"){ excludes 'javassist' }
+		compile(":mongodb:1.3.1"){ excludes 'javassist' }		
 		//compile ':spring-security-core:2.0-RC2'
 		//runtime ":hibernate:$grailsVersion"
 		runtime ':hibernate:3.6.10.6'
 		runtime ":jquery:1.10.2.2"
 		runtime ":resources:1.2"
 		runtime ":database-migration:1.3.2"
-
 		// Uncomment these (or add new ones) to enable additional resources capabilities
 		//runtime ":zipped-resources:1.0"
 		//runtime ":cached-resources:1.0"

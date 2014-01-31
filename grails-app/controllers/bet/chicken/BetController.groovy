@@ -35,6 +35,7 @@ class BetController {
 	}
 	
 	def list(){
+		session['key']="value"
 		def bets
 		try{
 			bets = betService.list()	

@@ -152,8 +152,31 @@ grails.views.javascript.library="jquery"
 //	'/**':        'ANY_CHANNEL'
 // ]
 
+grails.plugin.databasesession.enabled=true
+
 cache{
-	duration = 42200;
-	servers = "127.0.0.1:11211";
+	environments{
+		development{
+			duration = 42200;
+			servers = "127.0.0.1:11211";
+		}
+		production {
+			duration = 42200;
+			servers = "pub-memcache-16960.us-east-1-1.2.ec2.garantiadata.com:16960";
+		}
+	}
 }
+
+grails {
+	plugin {
+		databasesession {
+			deleteInvalidSessions = true
+			cleanup {
+				enabled = false
+				maxAge = 15
+			}
+		}
+	}
+}
+
 
