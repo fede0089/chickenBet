@@ -328,28 +328,94 @@ class MemcachedService implements InitializingBean,Persister {
 	@Override
 	public void setAttribute(String sessionId, String name, Object value)
 			throws InvalidatedSessionException {
-		// TODO Auto-generated method stub
+		
+		Assert.notNull name, 'name parameter cannot be null'
+
+		if (value == null) {
+			removeAttribute sessionId, name
+			return
+		}
+
+		// special case; use request scope and don't store in session, the filter will set it in the session at the end of the request
+		if (value != null && GrailsApplicationAttributes.FLASH_SCOPE == name) {
+			if (value != GrailsApplicationAttributes.FLASH_SCOPE) {
+				SessionProxyFilter.request.setAttribute(GrailsApplicationAttributes.FLASH_SCOPE, value)
+				return
+			}
+
+			// the filter set the value as the key, so retrieve it from the request
+			value = SessionProxyFilter.request.getAttribute(GrailsApplicationAttributes.FLASH_SCOPE)
+		}
+
+		try {
+			def session = get(sessionId)
+			checkInvalidated session
+			session.lastAccessedTime = System.currentTimeMillis()
+			session[name] = value
+			put(sessionId,session)
+			}
+	
+		catch (e) {
+			handleException e
+		}
 		
 	}
 
 	@Override
 	public void removeAttribute(String sessionId, String name)
 			throws InvalidatedSessionException {
-		// TODO Auto-generated method stub
+		if (name == null) return
+
+		try {
+			def session = get(sessionId)
+			checkInvalidated session
+			session.lastAccessedTime = System.currentTimeMillis()
+			session[name]=null
+			put(sessionId,session)
+
+		}
+		catch (e) {
+			handleException e
+		}
 		
 	}
+			
+	
+			
 
 	@Override
 	public List<String> getAttributeNames(String sessionId)
 			throws InvalidatedSessionException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			
+			def session = get(sessionId)	
+			session.keySet()
+		}
+		catch (e) {
+			handleException e
+		}
 	}
 
 	@Override
 	public void invalidate(String sessionId) {
-		// TODO Auto-generated method stub
-		
+		try {
+			def session =[:]
+
+		//	PersistentSession session = PersistentSession.lock(sessionId)
+
+			def conf = grailsApplication.config.grails.plugin.databasesession
+			def deleteInvalidSessions = conf.deleteInvalidSessions ?: false
+			if (deleteInvalidSessions) {
+				delete(sessionId)
+			}
+			else {
+				session?.invalidated = true
+				put(sessionId,session)
+			}
+		}
+		catch (e) {
+			handleException e
+		}
 	}
 
 	
@@ -357,10 +423,8 @@ class MemcachedService implements InitializingBean,Persister {
 	@Override
 	public void create(String sessionId) {
 		try {
-			if (PersistentSession.exists(sessionId)) {
-				return
-			}
-
+			if (get(sessionId)) 
+				return		
 			def session = [:]
 			session.creationTime = System.currentTimeMillis()
 			session.lastAccessedTime = session.creationTime
@@ -377,14 +441,21 @@ class MemcachedService implements InitializingBean,Persister {
 	@Override
 	public long getLastAccessedTime(String sessionId)
 			throws InvalidatedSessionException {
-		// TODO Auto-generated method stub
-		return 0;
+		def session = get(sessionId)
+		checkInvalidated session
+		session.lastAccessedTime
 	}
 
 	@Override
 	public void setMaxInactiveInterval(String sessionId, int interval)
 			throws InvalidatedSessionException {
-		// TODO Auto-generated method stub
+		def session = get(sessionId)
+		checkInvalidated session
+
+		session.maxInactiveInterval = interval
+		if (interval == 0) {
+			invalidate sessionId
+		}
 		
 	}
 
