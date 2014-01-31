@@ -1,8 +1,11 @@
 package bet.chicken
 import net.spy.memcached.DefaultHashAlgorithm
+
 import org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes
 import org.apache.commons.logging.LogFactory
+
 import grails.util.GrailsUtil
+
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Future;
@@ -10,6 +13,7 @@ import java.util.concurrent.TimeoutException
 import java.util.concurrent.Future
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
+
 import  grails.plugin.databasesession.SessionProxyFilter
 import net.spy.memcached.ConnectionFactoryBuilder
 import net.spy.memcached.MemcachedClient
@@ -22,6 +26,7 @@ import net.spy.memcached.AddrUtil
 import net.spy.memcached.internal.BulkFuture
 import net.spy.memcached.transcoders.Transcoder;
 import grails.plugin.databasesession.InvalidatedSessionException;
+import grails.plugin.databasesession.PersistentSession;
 import grails.plugin.databasesession.Persister
 import groovy.lang.Closure;
 
@@ -329,7 +334,8 @@ class MemcachedService implements InitializingBean,Persister {
 	public void setAttribute(String sessionId, String name, Object value)
 			throws InvalidatedSessionException {
 		
-		Assert.notNull name, 'name parameter cannot be null'
+		if (name==null)
+			return 
 
 		if (value == null) {
 			removeAttribute sessionId, name
@@ -370,7 +376,8 @@ class MemcachedService implements InitializingBean,Persister {
 			def session = get(sessionId)
 			checkInvalidated session
 			session.lastAccessedTime = System.currentTimeMillis()
-			session[name]=null
+			if(session[name])
+				session.remove(name)
 			put(sessionId,session)
 
 		}
@@ -389,7 +396,7 @@ class MemcachedService implements InitializingBean,Persister {
 		try {
 			
 			def session = get(sessionId)	
-			session.keySet()
+			session.keySet() as List
 		}
 		catch (e) {
 			handleException e
@@ -400,7 +407,6 @@ class MemcachedService implements InitializingBean,Persister {
 	public void invalidate(String sessionId) {
 		try {
 			def session =[:]
-
 		//	PersistentSession session = PersistentSession.lock(sessionId)
 
 			def conf = grailsApplication.config.grails.plugin.databasesession
@@ -409,7 +415,7 @@ class MemcachedService implements InitializingBean,Persister {
 				delete(sessionId)
 			}
 			else {
-				session?.invalidated = true
+				session.invalidated = true
 				put(sessionId,session)
 			}
 		}
@@ -456,20 +462,24 @@ class MemcachedService implements InitializingBean,Persister {
 		if (interval == 0) {
 			invalidate sessionId
 		}
+		else
+			put(sessionId,session)
 		
 	}
 
 	@Override
 	public int getMaxInactiveInterval(String sessionId)
 			throws InvalidatedSessionException {
-		// TODO Auto-generated method stub
-		return 0;
+		def session = get(sessionId)
+		checkInvalidated session
+		session.maxInactiveInterval
 	}
 
 	@Override
 	public boolean isValid(String sessionId) {
-		// TODO Auto-generated method stub
-		return false;
+		def session = get(sessionId)
+		def isValid = !session.invalidated && session.lastAccessedTime > System.currentTimeMillis() - session.maxInactiveInterval * 1000 * 60
+		session && isValid
 	}
 	
 	protected void handleException(e) {
@@ -478,5 +488,19 @@ class MemcachedService implements InitializingBean,Persister {
 		}
 		GrailsUtil.deepSanitize e
 		log.error e.message, e
+	}
+	
+	
+	protected void checkInvalidated(Map session) {
+		if (!session || session.invalidated) {
+			throw new InvalidatedSessionException()
+		}
+	}
+	
+	protected void checkInvalidated(String sessionId) {
+		Boolean invalidated = get(sessionId)?.invalidated
+		if (invalidated == null || invalidated) {
+			throw new InvalidatedSessionException()
+		}
 	}
 }
