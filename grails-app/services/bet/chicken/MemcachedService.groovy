@@ -59,7 +59,8 @@ class MemcachedService implements InitializingBean,Persister {
 
 		if (Environment.current==Environment.PRODUCTION){
 			try {
-				AuthDescriptor ad = new AuthDescriptor(["PLAIN" ],
+				String[] stringArray = ["PLAIN"]
+				AuthDescriptor ad = new AuthDescriptor(stringArray,
 					new PlainCallbackHandler(System.getenv("MEMCACHEDCLOUD_USERNAME"), System.getenv("MEMCACHEDCLOUD_PASSWORD")));
 			
 				 cache = new MemcachedClient(
