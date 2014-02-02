@@ -5,6 +5,7 @@ import org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes
 import org.apache.commons.logging.LogFactory
 
 import grails.util.GrailsUtil
+import grails.util.Environment
 
 import java.util.List;
 import java.util.Map;
@@ -56,47 +57,36 @@ class MemcachedService implements InitializingBean,Persister {
 		log.debug( "Initializing memcached server $servers" );
 
 
-		environments{
-			development{
-				if( !servers )
-				{
-					//throw new IllegalArgumentException( "Memcached server was not set." );
-					servers="127.0.0.1:11211"
-				}
-				ConnectionFactoryBuilder connectionFactoryBuilder = new ConnectionFactoryBuilder();
-				connectionFactoryBuilder.setHashAlg( DefaultHashAlgorithm.KETAMA_HASH );
-				connectionFactoryBuilder.setProtocol( ConnectionFactoryBuilder.Protocol.BINARY );
-				connectionFactoryBuilder.setOpTimeout( timeoutInMillis );
-				cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
-			}
-			test{
-				if( !servers )
-				{
-					//throw new IllegalArgumentException( "Memcached server was not set." );
-					servers="127.0.0.1:11211"
-				}
-				ConnectionFactoryBuilder connectionFactoryBuilder = new ConnectionFactoryBuilder();
-				connectionFactoryBuilder.setHashAlg( DefaultHashAlgorithm.KETAMA_HASH );
-				connectionFactoryBuilder.setProtocol( ConnectionFactoryBuilder.Protocol.BINARY );
-				connectionFactoryBuilder.setOpTimeout( timeoutInMillis );
-				cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
-			}
-			production{
-				try {
-					AuthDescriptor ad = new AuthDescriptor(["PLAIN" ],
-						new PlainCallbackHandler(System.getenv("MEMCACHEDCLOUD_USERNAME"), System.getenv("MEMCACHEDCLOUD_PASSWORD")));
-				
-					 cache = new MemcachedClient(
-							  new ConnectionFactoryBuilder()
-								  .setProtocol(ConnectionFactoryBuilder.Protocol.BINARY)
-								  .setAuthDescriptor(ad).build(),
-						  AddrUtil.getAddresses(System.getenv("MEMCACHEDCLOUD_SERVERS")));
-				
-				} catch (IOException ex) {
-					// the Memcached client could not be initialized.
-				}
+		if (Environment.current==Environment.PRODUCTION){
+			try {
+				AuthDescriptor ad = new AuthDescriptor(["PLAIN" ],
+					new PlainCallbackHandler(System.getenv("MEMCACHEDCLOUD_USERNAME"), System.getenv("MEMCACHEDCLOUD_PASSWORD")));
+			
+				 cache = new MemcachedClient(
+						  new ConnectionFactoryBuilder()
+							  .setProtocol(ConnectionFactoryBuilder.Protocol.BINARY)
+							  .setAuthDescriptor(ad).build(),
+					  AddrUtil.getAddresses(System.getenv("MEMCACHEDCLOUD_SERVERS")));
+			
+			} catch (IOException ex) {
+				// the Memcached client could not be initialized.
 			}
 		}
+		else{
+			if( !servers )
+			{
+				//throw new IllegalArgumentException( "Memcached server was not set." );
+				servers="127.0.0.1:11211"
+			}
+			ConnectionFactoryBuilder connectionFactoryBuilder = new ConnectionFactoryBuilder();
+			connectionFactoryBuilder.setHashAlg( DefaultHashAlgorithm.KETAMA_HASH );
+			connectionFactoryBuilder.setProtocol( ConnectionFactoryBuilder.Protocol.BINARY );
+			connectionFactoryBuilder.setOpTimeout( timeoutInMillis );
+			cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
+
+		}
+			
+		
 		if( !transcoder )
 		{
 			transcoder = new GroovyObjectsTranscoder( compressionThreshold : 1024 * 1024 );
