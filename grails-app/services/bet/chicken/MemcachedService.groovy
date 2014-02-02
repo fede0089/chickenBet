@@ -53,28 +53,32 @@ class MemcachedService implements InitializingBean,Persister {
 
 	void afterPropertiesSet()
 	{
-
-		//defaultCacheTimeSeconds = grailsApplication.config.cache.duration;
-	//	servers                 = grailsApplication.config.cache.servers;
-
-		if( !servers )
-		{
-			//throw new IllegalArgumentException( "Memcached server was not set." );
-			servers="127.0.0.1:11211"
-		}
-
 		log.debug( "Initializing memcached server $servers" );
 
-		ConnectionFactoryBuilder connectionFactoryBuilder = new ConnectionFactoryBuilder();
-		connectionFactoryBuilder.setHashAlg( DefaultHashAlgorithm.KETAMA_HASH );
-		connectionFactoryBuilder.setProtocol( ConnectionFactoryBuilder.Protocol.BINARY );
-		connectionFactoryBuilder.setOpTimeout( timeoutInMillis );
 
 		environments{
 			development{
+				if( !servers )
+				{
+					//throw new IllegalArgumentException( "Memcached server was not set." );
+					servers="127.0.0.1:11211"
+				}
+				ConnectionFactoryBuilder connectionFactoryBuilder = new ConnectionFactoryBuilder();
+				connectionFactoryBuilder.setHashAlg( DefaultHashAlgorithm.KETAMA_HASH );
+				connectionFactoryBuilder.setProtocol( ConnectionFactoryBuilder.Protocol.BINARY );
+				connectionFactoryBuilder.setOpTimeout( timeoutInMillis );
 				cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
 			}
 			test{
+				if( !servers )
+				{
+					//throw new IllegalArgumentException( "Memcached server was not set." );
+					servers="127.0.0.1:11211"
+				}
+				ConnectionFactoryBuilder connectionFactoryBuilder = new ConnectionFactoryBuilder();
+				connectionFactoryBuilder.setHashAlg( DefaultHashAlgorithm.KETAMA_HASH );
+				connectionFactoryBuilder.setProtocol( ConnectionFactoryBuilder.Protocol.BINARY );
+				connectionFactoryBuilder.setOpTimeout( timeoutInMillis );
 				cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
 			}
 			production{
