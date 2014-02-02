@@ -15,8 +15,8 @@ class BetController {
 
 	BetService betService
 	PlayerService playerService
-
-
+	
+	
 	def createBet(BetCommandObject bco,	String alias) {
 		def player
 		

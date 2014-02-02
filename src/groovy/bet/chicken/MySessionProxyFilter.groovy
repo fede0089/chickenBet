@@ -9,8 +9,10 @@ class MySessionProxyFilter extends SessionProxyFilter{
 	@Override
 	protected Cookie newCookie(String sessionId, HttpServletRequest request) {
 		Cookie cookie = new Cookie(COOKIE_NAME, sessionId);
-		cookie.setDomain(request.getServerName()); // TODO needs config option
-		cookie.setPath(COOKIE_PATH);
+		//TODO Workaround
+		if (request.getServerName()!="localhost")
+			cookie.setDomain(request.getServerName()); // TODO needs config option
+		cookie.setPath("/");
 		cookie.setSecure(request.isSecure());
 		return cookie;
 	}

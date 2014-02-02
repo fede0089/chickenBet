@@ -133,10 +133,23 @@ log4j = {
 grails.views.javascript.library="jquery"
 
 //Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.rejectIfNoRule = false
+grails.plugin.springsecurity.fii.rejectPublicInvocations = false
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'bet.chicken.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'bet.chicken.UserRole'
 grails.plugin.springsecurity.authority.className = 'bet.chicken.Role'
-
+//grails.plugin.springsecurity.interceptUrlMap = [
+//	'/':                  ['permitAll'],
+//	'**/index':             ['permitAll'],
+//	'**/index.gsp':         ['permitAll'],
+//	'/**/js/**':          ['permitAll'],
+//	'/**/css/**':         ['permitAll'],
+//	'/**/images/**':      ['permitAll'],
+//	'/**/media/**':       ['permitAll'],
+//	'/**/favicon.ico':    ['permitAll'],
+//	'**/login/**':          ['permitAll'],
+//	'**/logout/**':         ['permitAll']
+// ]
 
 
 cache{
@@ -156,7 +169,7 @@ cache{
 grails {
 	plugin {
 		databasesession {
-			enabled=false
+			enabled=true
 			deleteInvalidSessions = true
 			cleanup {
 				enabled = false
