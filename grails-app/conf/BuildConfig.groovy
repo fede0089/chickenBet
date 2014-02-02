@@ -38,6 +38,7 @@ grails.project.dependency.resolution = {
 		//mavenRepo "http://repository.jboss.com/maven2/"
 		mavenRepo 'http://repo.spring.io/milestone'
 		mavenRepo "http://files.couchbase.com/maven2"
+		//mavenRepo 'http://repo.smokejumperit.com'
 
 	}
 
@@ -51,10 +52,11 @@ grails.project.dependency.resolution = {
 
 	plugins {
 		compile ":database-session:1.2.1"
+		//compile 'RobertFischer:database-session:1.2.3'
 		compile ':cache:1.0.1'
 		compile ":joda-time:1.4"
 		compile(":mongodb:1.3.1"){ excludes 'javassist' }		
-		//compile ':spring-security-core:2.0-RC2'
+		compile ':spring-security-core:2.0-RC2'
 		//runtime ":hibernate:$grailsVersion"
 		runtime ':hibernate:3.6.10.6'
 		runtime ":jquery:1.10.2.2"

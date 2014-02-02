@@ -322,6 +322,8 @@ class MemcachedService implements InitializingBean,Persister {
 			if (attribute != null && GrailsApplicationAttributes.FLASH_SCOPE == name) {
 				SessionProxyFilter.request.setAttribute(GrailsApplicationAttributes.FLASH_SCOPE, attribute)
 			}
+			
+			put(sessionId,session)
 
 			return attribute
 		}
