@@ -17,6 +17,8 @@ import java.util.concurrent.TimeoutException
 import  grails.plugin.databasesession.SessionProxyFilter
 import net.spy.memcached.ConnectionFactoryBuilder
 import net.spy.memcached.MemcachedClient
+import net.spy.memcached.auth.AuthDescriptor
+import net.spy.memcached.auth.PlainCallbackHandler
 
 import org.apache.commons.logging.Log;
 import org.grails.datastore.mapping.validation.ValidationException
@@ -68,8 +70,29 @@ class MemcachedService implements InitializingBean,Persister {
 		connectionFactoryBuilder.setProtocol( ConnectionFactoryBuilder.Protocol.BINARY );
 		connectionFactoryBuilder.setOpTimeout( timeoutInMillis );
 
-		cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
-
+		environments{
+			development{
+				cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
+			}
+			test{
+				cache = new MemcachedClient( connectionFactoryBuilder.build(), AddrUtil.getAddresses( servers ) );
+			}
+			production{
+				try {
+					AuthDescriptor ad = new AuthDescriptor(["PLAIN" ],
+						new PlainCallbackHandler(System.getenv("MEMCACHEDCLOUD_USERNAME"), System.getenv("MEMCACHEDCLOUD_PASSWORD")));
+				
+					 cache = new MemcachedClient(
+							  new ConnectionFactoryBuilder()
+								  .setProtocol(ConnectionFactoryBuilder.Protocol.BINARY)
+								  .setAuthDescriptor(ad).build(),
+						  AddrUtil.getAddresses(System.getenv("MEMCACHEDCLOUD_SERVERS")));
+				
+				} catch (IOException ex) {
+					// the Memcached client could not be initialized.
+				}
+			}
+		}
 		if( !transcoder )
 		{
 			transcoder = new GroovyObjectsTranscoder( compressionThreshold : 1024 * 1024 );
