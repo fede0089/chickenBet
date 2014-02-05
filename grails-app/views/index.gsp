@@ -19,7 +19,182 @@
 			.btn-custom{
 				width:200px;
 			}
-		</style>
+					
+		#floatingCirclesG {
+		    position: relative;
+		    width: 128px;
+		    height: 128px;
+		    -moz-transform: scale(0.6);
+		    -webkit-transform: scale(0.6);
+		    -o-transform: scale(0.6);
+		    -ms-transform: scale(0.6);
+		    transform: scale(0.6);
+		}
+		
+		.f_circleG {
+		    position: absolute;
+		    background-color: #FFFFFF;
+		    height: 23px;
+		    width: 23px;
+		    -moz-border-radius: 12px;
+		    -moz-animation-name: f_fadeG;
+		    -moz-animation-duration: 1.04s;
+		    -moz-animation-iteration-count: infinite;
+		    -moz-animation-direction: linear;
+		    -webkit-border-radius: 12px;
+		    -webkit-animation-name: f_fadeG;
+		    -webkit-animation-duration: 1.04s;
+		    -webkit-animation-iteration-count: infinite;
+		    -webkit-animation-direction: linear;
+		    -o-border-radius: 12px;
+		    -o-animation-name: f_fadeG;
+		    -o-animation-duration: 1.04s;
+		    -o-animation-iteration-count: infinite;
+		    -o-animation-direction: linear;
+		    -ms-border-radius: 12px;
+		    -ms-animation-name: f_fadeG;
+		    -ms-animation-duration: 1.04s;
+		    -ms-animation-iteration-count: infinite;
+		    -ms-animation-direction: linear;
+		    border-radius: 12px;
+		    animation-name: f_fadeG;
+		    animation-duration: 1.04s;
+		    animation-iteration-count: infinite;
+		    animation-direction: linear;
+		}
+		
+		#frotateG_01 {
+		    left: 0;
+		    top: 52px;
+		    -moz-animation-delay: 0.39s;
+		    -webkit-animation-delay: 0.39s;
+		    -o-animation-delay: 0.39s;
+		    -ms-animation-delay: 0.39s;
+		    animation-delay: 0.39s;
+		}
+		
+		#frotateG_02 {
+		    left: 15px;
+		    top: 15px;
+		    -moz-animation-delay: 0.52s;
+		    -webkit-animation-delay: 0.52s;
+		    -o-animation-delay: 0.52s;
+		    -ms-animation-delay: 0.52s;
+		    animation-delay: 0.52s;
+		}
+		
+		#frotateG_03 {
+		    left: 52px;
+		    top: 0;
+		    -moz-animation-delay: 0.65s;
+		    -webkit-animation-delay: 0.65s;
+		    -o-animation-delay: 0.65s;
+		    -ms-animation-delay: 0.65s;
+		    animation-delay: 0.65s;
+		}
+		
+		#frotateG_04 {
+		    right: 15px;
+		    top: 15px;
+		    -moz-animation-delay: 0.78s;
+		    -webkit-animation-delay: 0.78s;
+		    -o-animation-delay: 0.78s;
+		    -ms-animation-delay: 0.78s;
+		    animation-delay: 0.78s;
+		}
+		
+		#frotateG_05 {
+		    right: 0;
+		    top: 52px;
+		    -moz-animation-delay: 0.91s;
+		    -webkit-animation-delay: 0.91s;
+		    -o-animation-delay: 0.91s;
+		    -ms-animation-delay: 0.91s;
+		    animation-delay: 0.91s;
+		}
+		
+		#frotateG_06 {
+		    right: 15px;
+		    bottom: 15px;
+		    -moz-animation-delay: 1.04s;
+		    -webkit-animation-delay: 1.04s;
+		    -o-animation-delay: 1.04s;
+		    -ms-animation-delay: 1.04s;
+		    animation-delay: 1.04s;
+		}
+		
+		#frotateG_07 {
+		    left: 52px;
+		    bottom: 0;
+		    -moz-animation-delay: 1.17s;
+		    -webkit-animation-delay: 1.17s;
+		    -o-animation-delay: 1.17s;
+		    -ms-animation-delay: 1.17s;
+		    animation-delay: 1.17s;
+		}
+		
+		#frotateG_08 {
+		    left: 15px;
+		    bottom: 15px;
+		    -moz-animation-delay: 1.3s;
+		    -webkit-animation-delay: 1.3s;
+		    -o-animation-delay: 1.3s;
+		    -ms-animation-delay: 1.3s;
+		    animation-delay: 1.3s;
+		}
+		
+		@-moz-keyframes f_fadeG {
+		    0% {
+		        background-color: #000000;
+		    }
+		
+		    100% {
+		        background-color: #FFFFFF;
+		    }
+		}
+		
+		@-webkit-keyframes f_fadeG {
+		    0% {
+		        background-color: #000000;
+		    }
+		
+		    100% {
+		        background-color: #FFFFFF;
+		    }
+		}
+		
+		@-o-keyframes f_fadeG {
+		    0% {
+		        background-color: #000000;
+		    }
+		
+		    100% {
+		        background-color: #FFFFFF;
+		    }
+		}
+		
+		@-ms-keyframes f_fadeG {
+		    0% {
+		        background-color: #000000;
+		    }
+		
+		    100% {
+		        background-color: #FFFFFF;
+		    }
+		}
+		
+		@keyframes f_fadeG {
+		    0% {
+		        background-color: #000000;
+		    }
+		
+		    100% {
+		        background-color: #FFFFFF;
+		    }
+		}
+		
+		</style> 
+				
 		<r:layoutResources />
 	</head>
 	<body style="background-color: rgba(76, 11, 214, 0.5);">
@@ -56,18 +231,32 @@
 		<div class="container" style="margin-top: 115px;">
 			</br>
 			<div id="messages"></div>
-			<div class="pull-right">
-			  </br>
-			  <p class="text-center"><g:link action="list" controller="bet" class="btn btn-danger btn-lg btn-custom">
-			      <span class="glyphicon glyphicon-usd a-btn-symbol pull-left"></span> Ver apuestas		  
-			 </g:link></p>
-			  <p class="text-center"><g:link  action="loadResults" controller="bet" class="btn btn-danger btn-lg btn-custom">
-			  	<span class="glyphicon glyphicon-registration-mark pull-left"></span>  Sorteo
-			  </g:link></p>
-			  <p class="text-center"><g:link class="btn btn-danger btn-lg btn-custom" action="history" controller="bet" >
-			  	<span class="glyphicon glyphicon-folder-open pull-left"></span>  Historial
-			  </g:link></p>
-			  <g:img file="ruleta_sm.png" style="width:70%;position:absolute;bottom:0;left:0; z-index:-99;"/>
+			<center>
+				<div id="floatingCirclesG">
+					<div class="f_circleG" id="frotateG_01"></div>
+					<div class="f_circleG" id="frotateG_02"></div>
+					<div class="f_circleG" id="frotateG_03"></div>
+					<div class="f_circleG" id="frotateG_04"></div>
+					<div class="f_circleG" id="frotateG_05"></div>
+					<div class="f_circleG" id="frotateG_06"></div>
+					<div class="f_circleG" id="frotateG_07"></div>
+					<div class="f_circleG" id="frotateG_08"></div>
+				</div>
+			</center>
+			<div id="bodyContainer"  style="display: none;">
+				<div class="pull-right">
+				  </br>
+				  <p class="text-center"><g:link action="list" controller="bet" class="btn btn-danger btn-lg btn-custom">
+				      <span class="glyphicon glyphicon-usd a-btn-symbol pull-left"></span> Ver apuestas		  
+				 </g:link></p>
+				  <p class="text-center"><g:link  action="loadResults" controller="bet" class="btn btn-danger btn-lg btn-custom">
+				  	<span class="glyphicon glyphicon-registration-mark pull-left"></span>  Sorteo
+				  </g:link></p>
+				  <p class="text-center"><g:link class="btn btn-danger btn-lg btn-custom" action="history" controller="bet" >
+				  	<span class="glyphicon glyphicon-folder-open pull-left"></span>  Historial
+				  </g:link></p>
+				  <g:img file="ruleta_sm.png" style="width:70%;position:absolute;bottom:0;left:0; z-index:-99;"/>
+				</div>
 			</div>
 		</div>
 		<div class="footer"></div>
@@ -81,6 +270,12 @@
 		<g:javascript src="TableTools.js" />
 		<g:javascript src="bootstrap-datepicker.js" />
 		<r:layoutResources />
+		<script>
+		$(document).ready(function(){
+		  $("#floatingCirclesG").hide();
+		  $("#bodyContainer").show();
+		});
+		</script>
 	</body>
 </html>
 
