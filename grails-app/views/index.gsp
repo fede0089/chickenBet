@@ -271,7 +271,7 @@
 		<g:javascript src="bootstrap-datepicker.js" />
 		<r:layoutResources />
 		<script>
-		$(document).load(function(){
+		$(window).load(function(){
 		  $("#floatingCirclesG").hide();
 		  $("#bodyContainer").show();
 		});
