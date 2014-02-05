@@ -22,7 +22,7 @@ environments {
 		grails {
 			mongo {
 				host = "127.0.0.1"
-				port = s
+				port = 27017
 				databaseName = "chickenBet"
 			}
 		}
