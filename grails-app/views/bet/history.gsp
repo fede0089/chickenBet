@@ -34,6 +34,7 @@
 	<g:javascript>
 		$(document).ready(function(){
 			$("#datepicker").datepicker();
+			hideSpinner();
 		})
 	</g:javascript>
 </body>

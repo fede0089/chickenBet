@@ -198,6 +198,8 @@
 			        ]		           
 		   }
 		  });
+		  
+		hideSpinner();
 	}
 	
 	function refreshDataTable(){

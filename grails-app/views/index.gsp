@@ -22,8 +22,8 @@
 		</style>
 		<r:layoutResources />
 	</head>
-	<body style="background-color:rgb(168, 70, 206);">
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#510868;">
+	<body style="background-color: rgba(76, 11, 214, 0.5);">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #101010;">
 	      <div class="container">
 	        <div class="navbar-header">
 	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
