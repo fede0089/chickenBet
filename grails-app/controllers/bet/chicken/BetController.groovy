@@ -68,11 +68,13 @@ class BetController {
 	def checkWinners(BetCommandObject bco){
 		def winners
 		try{
+			if (!betService.checkUniqueDate(bco.date))
+				render status:409 
 			winners = betService.checkWinners(bco)
 			betService.saveHistory(bco,winners)
 		}
 		catch (BetException e){
-			//TODO - Throw exception
+			//TODO
 		}
 		render template:'checkWinners',model:[winners:winners]
 	}

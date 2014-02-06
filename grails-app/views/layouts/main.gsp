@@ -43,8 +43,7 @@
 						class="icon-bar"></span>
 				</button>
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-				<a class="navbar-brand logo-nav" href="/ChickenBet"><g:img
-						file="logo2.png" /></a>
+	          <g:link class="navbar-brand logo-nav" uri="/"><g:img file="logo2.png"/></g:link>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

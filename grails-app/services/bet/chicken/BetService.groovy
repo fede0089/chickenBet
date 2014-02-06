@@ -67,6 +67,11 @@ class BetService {
 		}
 	}
 	
+	def checkUniqueDate(Date lotteryDate){
+		def history = History.findByLotteryDate(lotteryDate)
+		!history
+	}
+	
 	def saveHistory (BetCommandObject bco,winners){
 		//TODO
 		

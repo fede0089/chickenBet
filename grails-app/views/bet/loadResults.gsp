@@ -23,7 +23,7 @@
 	</div>
 	
 	<div id="results">
-		<g:formRemote name="checkWinners" url="['action':'checkWinners']" update="results" before="\$('#processing-modal').modal('show')" onComplete  ="\$('#processing-modal').modal('hide')" >
+		<g:formRemote name="checkWinners" url="['action':'checkWinners']" update="results" before="\$('#processing-modal').modal('show')" onComplete ="\$('#processing-modal').modal('hide')" onFailure="showError(XMLHttpRequest)">
 			<div class="row">
 				<div class="col-md-3 ">
 					<span style="font-size:20px;color:white;">Fecha del sorteo</span>
@@ -61,6 +61,13 @@
 				$("#datepicker").datepicker();
 				hideSpinner();
 			})
+			
+			function showError(xhr){
+			if (xhr.status==409)
+				addMessage('danger', "Error. Ya existe un sorte para la fecha indicada", $("#messages"), 'top');
+			else
+				addMessage('danger', "Error.", $("#messages"), 'top');				
+			}
 		</g:javascript>
 		
 	</div>
