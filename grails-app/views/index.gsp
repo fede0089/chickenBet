@@ -15,7 +15,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datepicker.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'custom_spinner.css')}" type="text/css">
 		<g:javascript library="jquery" plugin="jquery"/>		
-		<title>Chicken Bet v01</title>
+		<title>ChickenBet</title>
 		<r:layoutResources />
 	</head>
 	<body style="background-color: rgba(76, 11, 214, 0.5);">
