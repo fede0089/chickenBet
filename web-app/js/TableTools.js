@@ -394,10 +394,13 @@ function TableTools ( oInit )
 				_aoPrintHidden.push({node:this,display:""});
 				$(this).hide();
 			});
-			$("#"+nNode.id+" td.hiddenCol").each(function(){
+			var allRows = $("#"+nNode.id).dataTable().fnGetNodes();
+			var cellsToHide= $("td.hiddenCol",allRows);
+			cellsToHide.each(function(){
 				_aoPrintHidden.push({node:this,display:""});
 				$(this).hide();
 			});
+			
 		}
 		
 		if ( nParent.nodeName != "BODY" )
