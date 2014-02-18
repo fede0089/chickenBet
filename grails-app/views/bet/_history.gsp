@@ -13,7 +13,7 @@
       <div class="modal-body">
 	      	<div class="panel panel-danger">
 				  <div class="panel-heading">
-				    <h3 class="panel-title"><b>7 aciertos (${winners[7].size()})</b></h3>
+				    <h3 class="panel-title"><b>7 aciertos</b><i> (${history.sevenWinners.size()})</i></h3>
 				  </div>
 				  <div class="panel-body">
 				    	<g:if test="${history.sevenWinners}">
@@ -28,7 +28,7 @@
 				</div>	
 			<div class="panel panel-danger">
 			  <div class="panel-heading">
-			    <h3 class="panel-title"><b>6 aciertos (${winners[6].size()})</b></h3>
+			    <h3 class="panel-title"><b>6 aciertos </b><i>(${history.sixWinners.size()})</i></h3>
 			  </div>
 			  <div class="panel-body">
 			    	<g:if test="${history.sixWinners}">
@@ -43,7 +43,7 @@
 			</div>	
 			 <div class="panel panel-danger">
 			  <div class="panel-heading">
-			    <h3 class="panel-title"><b>5 aciertos (${winners[5].size()})</b></h3>
+			    <h3 class="panel-title"><b>5 aciertos</b><i> (${history.fiveWinners.size()})</i></h3>
 			  </div>
 			  <div class="panel-body">
 			    	<g:if test="${history.fiveWinners}">

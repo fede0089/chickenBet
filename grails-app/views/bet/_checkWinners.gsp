@@ -5,7 +5,7 @@
 
 		<div class="panel panel-danger">
 		  <div class="panel-heading">
-		    <h3 class="panel-title"><b>${quantity} aciertos (${winners[quantity].size()})</b></h3>
+		    <h3 class="panel-title"><b>${quantity} aciertos</b><i>(${winners[quantity]?.size()?:0})</i></h3>
 		  </div>
 		  <div class="panel-body">
 		    	<g:if test="${winners[quantity]}">
