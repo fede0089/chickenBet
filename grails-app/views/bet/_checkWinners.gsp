@@ -5,12 +5,12 @@
 
 		<div class="panel panel-danger">
 		  <div class="panel-heading">
-		    <h3 class="panel-title"><b>${quantity} aciertos</b></h3>
+		    <h3 class="panel-title"><b>${quantity} aciertos (${winners[quantity].size()})</b></h3>
 		  </div>
 		  <div class="panel-body">
 		    	<g:if test="${winners[quantity]}">
 					<g:each in="${winners[quantity]}" var="winner">
-						<span style="font-size:20px;" class="label label-success winnerPopover" data-title="Jugada" data-trigger="hover" data-html=true
+						<span style="font-size:20px;" class="label label-success winnerPopover" data-title="Jugada" data-container="body" data-trigger="hover" data-html=true
 						data-content="<b>${winner.matched.join(',')}${quantity<7?',':''}<span style='color:red;'>${winner.missing.join(',')}</span></b>" >${winner.player.alias}</span>
 					</g:each>
 				</g:if>
