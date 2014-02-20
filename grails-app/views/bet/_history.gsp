@@ -141,7 +141,7 @@
 <script>
 	function initDataTable(){
 		$("#betTable").dataTable({
-		  	    "sDom": 'T<"row"><""f>rtp',
+		  	    "sDom": '<""f>rtp',
 			"sPagination": "bs_normal",
 			"oLanguage": {
 			    "sProcessing":     "Procesando...",
@@ -169,10 +169,7 @@
 			},
 		    "aoColumnDefs": [
 		                     { "bSortable": false, "aTargets": [ 1,2,3,4,5,6,7 ] }
-		                    ],
-		    "oTableTools": {   
-					"sSwfPath": "../swf/copy_csv_xls_pdf.swf"		           
-		   }
+		                    ]
 		  }); 
 	}
 </script>

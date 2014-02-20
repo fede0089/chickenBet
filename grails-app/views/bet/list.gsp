@@ -55,7 +55,9 @@
 	</div><!-- /.modal -->			
 	
 	
-	<p><a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#newBet"><span class="glyphicon glyphicon-plus"></span> Nueva apuesta</a></p>
+	<p><a class="btn btn-danger btn-lg" data-toggle="modal" data-target="#newBet"><span class="glyphicon glyphicon-plus"></span> Nueva apuesta</a>
+	<a class="btn btn-danger pull-right" onClick="printList()"><span class="glyphicon glyphicon-print"></span></a></p>
+
 	<div id="betTableWrapper">
 		<table class ="table table-hover pretty" id="betTable">
 			<thead>
@@ -95,7 +97,26 @@
 				</tr>
 			</tfoot>
 		</table>
+		
+		
+		<div id="printableTable" style="display:none;font-size:10px;">
+		<table style="max-width:18cm;">
+			<tbody>
+				<g:each in="${bets}" var="bet">
+					<tr>
+						<td class="text-center">${bet.player.alias}</td>
+						<g:each in="${0..6}">
+							<td class="text-center">${bet.numbers[it]}</td>
+						</g:each>
+					</tr>	
+				</g:each>
+			</tbody>
+		</table>
 	</div>
+		
+	</div>
+	
+		
 	<g:javascript>
 	$(document).ready(function(){
 		
@@ -147,7 +168,7 @@
 	
 	function initDataTable(){
 		$("#betTable").dataTable({
-	   	    "sDom": 'T<"row"><""f>rtp',
+		  	"sDom": '<""f>rtp',
 			"sPagination": "bs_normal",
 			"oLanguage": {
 			    "sProcessing":     "Procesando...",
@@ -175,28 +196,7 @@
 			},
 		    "aoColumnDefs": [
 		                     { "bSortable": false, "aTargets": [ 1,2,3,4,5,6,7,8 ] }
-		                    ],
-		    "oTableTools": {   
-					"sSwfPath": "../swf/copy_csv_xls_pdf.swf",
-					"aButtons": [
-			            {
-			                "sExtends": "copy",
-			                "mColumns": [0, 1, 2, 3,4,5,6,7]
-			            },
-			            {
-			                "sExtends": "csv",
-			                "mColumns": [0, 1, 2, 3,4,5,6,7]
-			            },
-			            {
-			                "sExtends": "pdf",
-			                "mColumns": [0, 1, 2, 3,4,5,6,7]
-			            },
-			            {
-			                "sExtends": "print",
-			                "mColumns": [0, 1, 2, 3,4,5,6,7]
-			            }
-			        ]		           
-		   }
+		                    ]
 		  });
 		  
 		hideSpinner();
@@ -214,6 +214,20 @@
 		addMessage('danger', "Error al eliminar la apuesta", $("#messages"), 'top');
 				
 	}
+	
+	function printList(){
+	
+//		$("#printButton").click( function() {			
+	
+			var myWindow = window.open("","_blank");
+			var printableHtml =$("#printableTable").html();	
+			myWindow.document.write(printableHtml);
+			myWindow.document.title="Vista previa";
+				
+	//	} );
+	}
+	
+	
 
 	</g:javascript>
 </body>
