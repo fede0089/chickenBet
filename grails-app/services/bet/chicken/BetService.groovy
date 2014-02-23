@@ -29,7 +29,8 @@ class BetService {
 	}
 	
 	def list(){
-		CurrentBet.list()
+		def betList = CurrentBet.list()
+		betList.sort {it.player.alias}
 	}
 	
 	def listOldBets(){
