@@ -98,24 +98,33 @@
 			</tfoot>
 		</table>
 		
+		<div id="printableTable" class="hidden" >
+			<table style="max-width:18cm;font-size:10px;" class="table table-bordered">
+				<tbody>
+					<g:each in="${bets}" var="bet">
+						<tr>
+							<td class="text-center" style="padding:0;">${bet.player.alias}</td>
+							<g:each in="${0..6}">
+								<td class="text-center" style="padding:0;">${bet.numbers[it]}</td>
+							</g:each>
+						</tr>	
+					</g:each>
+				</tbody>
+			</table>
+		</div>
 		
-		<div id="printableTable" style="display:none;font-size:10px;">
-		<table style="max-width:18cm;">
-			<tbody>
-				<g:each in="${bets}" var="bet">
-					<tr>
-						<td class="text-center">${bet.player.alias}</td>
-						<g:each in="${0..6}">
-							<td class="text-center">${bet.numbers[it]}</td>
-						</g:each>
-					</tr>	
-				</g:each>
-			</tbody>
-		</table>
-	</div>
 		
 	</div>
 	
+	<iframe id="printableIframe" class="hidden">	
+	</iframe>
+	
+	<div id="iframeCss">		
+		<style tyle="text/css">
+			@page {   size: auto; margin: 2cm }
+		</style>
+		<link rel="stylesheet"	href="${resource(dir: 'css', file: 'bootstrap.min.css')}"/>
+	</div>	
 		
 	<g:javascript>
 	$(document).ready(function(){
@@ -216,15 +225,13 @@
 	}
 	
 	function printList(){
-	
-//		$("#printButton").click( function() {			
-	
-			var myWindow = window.open("","_blank");
-			var printableHtml =$("#printableTable").html();	
-			myWindow.document.write(printableHtml);
-			myWindow.document.title="Vista previa";
+		iframeHtml=$("#printableTable").html();
+		iframeCss = $("#iframeCss").html();
+		$("#printableIframe").contents().find('head').html(iframeCss)	;	
+		$("#printableIframe").contents().find('body').html(iframeHtml)	;		
+		window.frames["printableIframe"].focus();
+		window.frames["printableIframe"].print();
 				
-	//	} );
 	}
 	
 	

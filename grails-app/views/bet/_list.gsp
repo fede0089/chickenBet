@@ -36,3 +36,19 @@
 		</tr>
 	</tfoot>
 </table>
+
+<div id="printableTable" class="hidden" >
+	<table style="max-width:18cm;font-size:10px;" class="table table-bordered">
+		<tbody>
+			<g:each in="${bets}" var="bet">
+				<tr>
+					<td class="text-center" style="padding:0;">${bet.player.alias}</td>
+					<g:each in="${0..6}">
+						<td class="text-center" style="padding:0;">${bet.numbers[it]}</td>
+					</g:each>
+				</tr>	
+			</g:each>
+		</tbody>
+	</table>
+</div>
+		

@@ -11,7 +11,6 @@
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'typeahead.js-bootstrap.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'jquery.dataTables.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datatables.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'TableTools.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'datepicker.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'custom_spinner.css')}" type="text/css">
 		<g:javascript library="jquery" plugin="jquery"/>		
@@ -87,8 +86,6 @@
 		<g:javascript src="typeahead.min.js" />
 		<g:javascript src="jquery.dataTables.min.js" />
 		<g:javascript src="datatables.js" />
-		<g:javascript src="ZeroClipboard.js" />
-		<g:javascript src="TableTools.js" />
 		<g:javascript src="bootstrap-datepicker.js" />
 		<r:layoutResources />
 		<script>
