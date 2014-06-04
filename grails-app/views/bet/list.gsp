@@ -230,8 +230,7 @@
 		$("#printableIframe").contents().find('head').html(iframeCss)	;	
 		$("#printableIframe").contents().find('body').html(iframeHtml)	;		
 		window.frames["printableIframe"].focus();
-		window.frames["printableIframe"].print();
-				
+		window.frames["printableIframe"].contentWindow.print();			
 	}
 	
 	
